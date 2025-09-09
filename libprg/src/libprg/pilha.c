@@ -16,12 +16,29 @@ pilha_t* criar_pilha(int capacidade) {
     return p;
 }
 void empilhar(pilha_t* pilha, int valor){
+    if (pilha->topo==(pilha->capacidade + 1)) {
+        pilha->capacidade *= 2;
+        pilha->elementos = realloc(pilha->elementos, pilha->capacidade * sizeof(int));
+        // exit(EXIT_FAILURE);
+
+
+
+
+    }
     pilha->topo++;
     pilha->elementos[pilha->topo] = valor;
 }
 
 
 // desempilhar
-// tamanho
+
+int tamanho(pilha_t* pilha) {
+    return pilha->topo +1;
+}
+
 // vazia
-// destruir
+
+void destruir(pilha_t* pilha) {
+    free(pilha->elementos);
+    free(pilha);
+}
