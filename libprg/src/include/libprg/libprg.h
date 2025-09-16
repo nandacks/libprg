@@ -1,5 +1,6 @@
 #ifndef LIBPRG_LIBPRG_H
 #define LIBPRG_LIBPRG_H
+#include <stdbool.h>
 
 /*----PILHA----*/
 
@@ -31,5 +32,12 @@ typedef struct fila fila_t;
 fila_t* criar_fila(int capacidade) ;
 void enfileirar(fila_t* fila, int valor);
 
+/*----LISTA----*/
+
+typedef struct lista_linear lista_linear_t;
+lista_linear_t* criar_lista_linear(int capacidade);
+void inserir_lista_linear(lista_linear_t* lista, int valor);
+bool cheia_lista_linear(lista_linear_t* lista);
+int buscar_lista(lista_linear_t* lista, int valor);
 
 #endif
