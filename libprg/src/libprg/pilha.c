@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 typedef struct pilha {
     int* elementos;
@@ -15,28 +16,33 @@ pilha_t* criar_pilha(int capacidade) {
 
     return p;
 }
+
 void empilhar(pilha_t* pilha, int valor){
-    if (pilha->topo==(pilha->capacidade + 1)) {
+    if (pilha->topo == (pilha->capacidade - 1)) {
         pilha->capacidade *= 2;
         pilha->elementos = realloc(pilha->elementos, pilha->capacidade * sizeof(int));
-        // exit(EXIT_FAILURE);
-
-
-
-
     }
     pilha->topo++;
     pilha->elementos[pilha->topo] = valor;
 }
 
-
-// desempilhar
-
-int tamanho(pilha_t* pilha) {
-    return pilha->topo +1;
+int vazia(pilha_t* pilha) {
+    return pilha->topo == -1;
 }
 
-// vazia
+int desempilhar(pilha_t* pilha) {
+    if (vazia(pilha)) {
+        printf("Erro: Pilha vazia!\n");
+        return -1; // Valor de erro
+    }
+    int valor = pilha->elementos[pilha->topo];
+    pilha->topo--;
+    return valor;
+}
+
+int tamanho(pilha_t* pilha) {
+    return pilha->topo + 1;
+}
 
 void destruir(pilha_t* pilha) {
     free(pilha->elementos);
