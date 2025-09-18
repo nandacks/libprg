@@ -35,7 +35,7 @@ void enfileirar(fila_t* fila, int valor);
 /*----LISTA----*/
 
 typedef struct lista_linear lista_linear_t;
-lista_linear_t* criar_lista_linear(int capacidade);
+lista_linear_t* criar_lista_linear(int capacidade, bool ordenada);
 void inserir_lista_linear(lista_linear_t* lista, int valor);
 bool cheia_lista_linear(lista_linear_t* lista);
 int buscar_lista(lista_linear_t* lista, int valor);
