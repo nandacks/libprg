@@ -1,22 +1,22 @@
-#ifndef LIBPRG_LIBPRG_H
+//#ifndef LIBPRG_LIBPRG_H
 #define LIBPRG_LIBPRG_H
 #include <stdbool.h>
 
 /*----PILHA----*/
 
-typedef struct {
-    double value;
-    int error;
-} result_t;
-
-typedef struct pilha pilha_t;
-
-pilha_t* criar_pilha(pilha_t* p1);
-void empilhar(pilha_t* pilha);
-int desempilhar(pilha_t* pilha);
-int tamanho(pilha_t* pilha);
-int vazia(pilha_t* pilha);
-void destruir(pilha_t* pilha);
+// typedef struct {
+//     double value;
+//     int error;
+// } result_t;
+//
+// typedef struct pilha pilha_t;
+//
+// pilha_t* criar_pilha(pilha_t* p1);
+// void empilhar(pilha_t* pilha);
+// int desempilhar(pilha_t* pilha);
+// int tamanho(pilha_t* pilha);
+// int vazia(pilha_t* pilha);
+// void destruir(pilha_t* pilha);
 
 // /*-----------------------------------------*/
 //
@@ -27,11 +27,18 @@ void destruir(pilha_t* pilha);
 // result_t compute(double a, double b, operation_t op);
 //
 // /*----FILA----*/
-//
-// typedef struct fila fila_t;
-// fila_t* criar_fila(int capacidade) ;
-// void enfileirar(fila_t* fila, int valor);
-//
+
+typedef struct fila fila_t;
+fila_t* criar_fila(int capacidade);
+void destruir_fila(fila_t* fila);
+bool vazia(fila_t* fila);
+bool cheia(fila_t* fila);
+int tamanho(fila_t* fila);
+bool enfileirar(fila_t* fila, int valor);
+bool desenfileirar(fila_t* fila, int* valor_removido);
+bool ver_inicio(fila_t* fila, int* valor_inicio);
+bool ver_fim(fila_t* fila, int* valor_fim);
+
 // /*----LISTA----*/
 //
 // typedef struct lista_linear lista_linear_t;
