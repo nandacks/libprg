@@ -8,13 +8,13 @@ typedef struct {
     int error;
 } result_t;
 
-typedef enum { SUM, SUB } operation_t;
-
-result_t sub(double a, double b);
-
-result_t sum(double a, double b);
-
-result_t compute(double a, double b, operation_t op);
+// typedef enum { SUM, SUB } operation_t;
+//
+// result_t sub(double a, double b);
+//
+// result_t sum(double a, double b);
+//
+// result_t compute(double a, double b, operation_t op);
 
 /*----PILHA----*/
 
@@ -38,16 +38,19 @@ int topo(pilha_t* pilha);
 //
 // /*----FILA----*/
 
-// typedef struct fila fila_t;
-// fila_t* criar_fila(int capacidade);
-// void destruir_fila(fila_t* fila);
-// bool vazia(fila_t* fila);
-// bool cheia(fila_t* fila);
-// int tamanho(fila_t* fila);
-// bool enfileirar(fila_t* fila, int valor);
-// bool desenfileirar(fila_t* fila, int* valor_removido);
-// bool ver_inicio(fila_t* fila, int* valor_inicio);
-// bool ver_fim(fila_t* fila, int* valor_fim);
+
+typedef struct fila {
+    int* elementos;
+    int inicio;
+    int fim;
+    int tamanho;
+    int capacidade;
+}fila_t;
+
+fila_t* criar_fila(int capacidade);
+void enfileirar(fila_t* fila, int valor);
+bool cheia(fila_t* fila);
+bool vazia(fila_t* fila);
 
 // /*----LISTA----*/
 //
