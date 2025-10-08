@@ -51,15 +51,31 @@ fila_t* criar_fila(int capacidade);
 void enfileirar(fila_t* fila, int valor);
 bool cheia(fila_t* fila);
 bool vazia(fila_t* fila);
+int desenfileirar(fila_t* fila);
+int tamanho_fila(fila_t* fila);
+int inicio_fila(fila_t* fila);
+int fim_fila(fila_t* fila);
+void destruir_fila(fila_t* fila);
 
-// /*----LISTA----*/
-//
-// typedef struct lista_linear lista_linear_t;
-// lista_linear_t* criar_lista_linear(int capacidade, bool ordenada);
-// void inserir_lista_linear(lista_linear_t* lista, int valor);
-// bool cheia_lista_linear(lista_linear_t* lista);
-// int buscar_lista(lista_linear_t* lista, int valor);
-//
+// /*----LISTA LINEAR----*/
+typedef struct lista_linear {
+    int* elementos;
+    int tamanho;
+    int capacidade;
+    bool ordenada;
+} lista_linear_t;
+
+
+void inserir_lista_linear(lista_linear_t* lista_linear, int valor);
+int buscar_lista(lista_linear_t* lista_linear, int valor);
+void remover_lista(lista_linear_t* lista_linear, int valor);
+bool cheia_lista_linear(lista_linear_t* lista_linear);
+bool vazia_lista_linear(lista_linear_t* lista_linear);
+void destruir_lista_linear(lista_linear_t* lista_linear);
+int tamanho_lista_linear(lista_linear_t* lista_linear);
+int* elementos_lista_linear(lista_linear_t* lista_linear);
+void imprimir_lista_linear(lista_linear_t* lista_linear);
+
 
 
 // ---------- Lista Ordenada ----------
