@@ -1,6 +1,6 @@
+#include "libprg/libprg.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 #define SIM 1
 #define NAO 2
