@@ -13,11 +13,12 @@ typedef struct pilha {
 
 
 
-pilha_t* criar_pilha(pilha_t* pilha, int capacidade) {
+pilha_t* criar_pilha(int capacidade) {
     pilha_t* p = malloc (sizeof(pilha_t));
     p->elementos = malloc(capacidade * sizeof(int));
     p->topo = -1;
-        return 1; // pilha n ta cheia
+    printf("Pilha criada com sucesso! \n");
+        return p; // pilha n ta cheia
 
 }
 
@@ -55,6 +56,7 @@ int pilha_cheia(pilha_t* pilha) {
 }
 
     int empilhar(pilha_t* pilha, int valor) {
+    printf("Topo: %d, Capacidade: %d\n", pilha->topo, pilha->capacidade);
         if (pilha->topo == pilha->capacidade - 1) {
             if (!pilha_cheia(pilha)) {
                 printf("Não foi possível empilhar. Pilha cheia!\n");
@@ -78,7 +80,7 @@ int pilha_cheia(pilha_t* pilha) {
     }
 
 
-    int tamanho(pilha_t* pilha) {
+    int tamanhop(pilha_t* pilha) {
         return pilha->topo + 1;
     }
 
