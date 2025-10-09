@@ -1,20 +1,13 @@
 //
 // Created by aluno on 09/09/2025.
 //
+
+#include <stdlib.h>
 #include <stdbool.h>
 #include "libprg/libprg.h"
-#include <stdlib.h>
-#include <stdio.h>
-
-typedef struct fila {
-    int* elementos;
-    int inicio;
-    int fim;
-    int tamanho;
-    int capacidade;
-}fila_t;
 
 
+// criar fila
 fila_t* criar_fila(int capacidade) {
     fila_t* f = malloc(sizeof(fila_t));
     f->elementos = malloc(sizeof(int) * capacidade);
@@ -25,47 +18,63 @@ fila_t* criar_fila(int capacidade) {
     return f;
 }
 
+// enfileirar
+void enfileirar(fila_t* fila, int valor) {
+    if (!cheia(fila)) { // verifica se a fila esta cheia
+        fila->elementos[fila->fim] = valor;
+        fila->fim = (fila->fim + 1) % fila->capacidade; // Fila circular é mais segura
+        fila->tamanho++;
+    }
+}
+
+// cheia
 bool cheia(fila_t* fila) {
     return fila->tamanho == fila->capacidade;
 }
 
+// vazia
 bool vazia(fila_t* fila) {
     return fila->tamanho == 0;
 }
 
-void enfileirar(fila_t* fila, int valor) {
-    if (cheia(fila)) {
-        printf("Fila cheia! Não é possível enfileirar %d\n", valor);
-        return;
-    }
-
-    fila->elementos[fila->fim] = valor;
-    fila->fim = (fila->fim + 1) % fila->capacidade; // comportamento circular
-    fila->tamanho++;
-}
-
+// Desenfileirar
 int desenfileirar(fila_t* fila) {
     if (vazia(fila)) {
-        printf("Fila vazia! Não é possível desenfileirar.\n");
-        return -1; // valor de erro
+        return -1; // Retorna -1 se a fila estiver vazia
     }
-
     int valor = fila->elementos[fila->inicio];
-    fila->inicio = (fila->inicio + 1) % fila->capacidade;
+    fila->inicio = (fila->inicio + 1) % fila->capacidade; // Fila circular
     fila->tamanho--;
     return valor;
 }
 
-void destruir_fila(fila_t* fila) {
-    free(fila->elementos);
-    free(fila);
+// Início - retorna o elemento no início da fila sem removê-lo
+int inicio_fila(fila_t* fila) {
+    if (vazia(fila)) {
+        return -1; // Retorna -1 se a fila estiver vazia
+    }
+    return fila->elementos[fila->inicio];
 }
 
+// Fim - retorna o elemento no fim da fila
+int fim_fila(fila_t* fila) {
+    if (vazia(fila)) {
+        return -1; // Retorna -1 se a fila estiver vazia
+    }
+    // O último elemento está na posição anterior ao fim
+    int posicao_ultimo = (fila->fim - 1 + fila->capacidade) % fila->capacidade;
+    return fila->elementos[posicao_ultimo];
+}
 
+// Tamanho
+int tamanho_fila(fila_t* fila) {
+    return fila->tamanho;
+}
 
-
-
-
-
-
-
+// Destruir
+void destruir_fila(fila_t* fila) {
+    if (fila != NULL) {
+        free(fila->elementos);
+        free(fila);
+    }
+}
