@@ -128,4 +128,4 @@ void imprimir_lista_linear(lista_linear_t* lista) {
         }
     }
     printf("]\n");
-}}
+}
